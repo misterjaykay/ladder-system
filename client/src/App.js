@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import axios from "axios";
+import DataContext from "./utils/DataContext";
+import Home from "./pages/Home";
+import Submit from "./pages/Submit";
+import Admin from "./pages/Admin";
+import Nav from "./components/Nav";
 
 function App() {
+
+  const [ data, setData ] = useState([]);
+  useEffect(() => {
+    axios.get("./data.json")
+    .then(res => {
+      setData(res.data.users);
+    })
+    .catch(err => console.log("Error: ", err));
+  },[])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DataContext.Provider value={data}>
+      <Router>
+        <Nav />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/rank" component={Home} />
+          <Route exact path="/submit" component={Submit} />
+          <Route exact path="/admin" component={Admin} />
+        </Switch>
+      </Router>
+    </DataContext.Provider>
   );
 }
 

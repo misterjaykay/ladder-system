@@ -1,0 +1,41 @@
+{
+    "users":
+    [
+        {
+            "id": 0,
+            "name": "Red_Propaganda",
+            "rating": 1000,
+
+            "wins": 7,
+            "losses": 3
+
+        },
+        {
+            "id": 1,
+            "name": "Kuto",
+            "rating": 1400,
+
+            "wins": 4,
+            "losses": 6
+
+        },
+        {
+            "id": 2,
+            "name": "Harrykim",
+            "rating": 990,
+
+            "wins": 17,
+            "losses": 3
+
+        },        
+        {
+            "id": 3,
+            "name": "Rekay",
+            "rating": 1110,
+
+            "wins": 0,
+            "losses": 0
+
+        }
+    ]
+}
