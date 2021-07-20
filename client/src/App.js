@@ -6,17 +6,24 @@ import Home from "./pages/Home";
 import Submit from "./pages/Submit";
 import Admin from "./pages/Admin";
 import Nav from "./components/Nav";
+import API from "./utils/API";
 
 function App() {
 
   const [ data, setData ] = useState([]);
+
   useEffect(() => {
-    axios.get("./data.json")
+    onLoad();
+  },[])
+
+  function onLoad() {
+    API.getPlayers()
     .then(res => {
-      setData(res.data.users);
+      console.log("whats in res", res)
+      setData(res.data)
     })
     .catch(err => console.log("Error: ", err));
-  },[])
+  }
 
   return (
     <DataContext.Provider value={data}>

@@ -8,10 +8,18 @@ const matchSchema = new Schema({
         unique: true
     },
     winner: {
+        type: Schema.Types.ObjectId, 
+        ref: 'Player' 
+    },
+    winnerRace: {
         type: String,
         required: true
     },
     loser: {
+        type: Schema.Types.ObjectId, 
+        ref: 'Player' 
+    },
+    loserRace: {
         type: String,
         required: true
     },
@@ -24,7 +32,8 @@ const matchSchema = new Schema({
         required: true
     },
     isAdmin: {
-        type: String,
+        type: Boolean,
+        default: false,
         required: true
     }
 });

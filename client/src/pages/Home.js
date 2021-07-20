@@ -7,7 +7,7 @@ export default function Home() {
     const context = useContext(DataContext);
     return(
         <>
-            <div>
+            <div className="before-table">
                 <h1>Rank Section</h1>
                 <table>
                     <tr>
@@ -22,9 +22,9 @@ export default function Home() {
                     {context.map(e => 
                     <tr>
                         <td></td>
-                        <td><Icon value={e.rating}/></td>
-                        <td>{e.name}</td>
-                        <td>{e.rating}</td>
+                        <td><Icon value={e.ratings}/></td>
+                        <td>{e.playerName}</td>
+                        <td>{e.ratings}</td>
                         <td>{e.wins} - {e.losses}</td>
                         <td>{Math.floor(e.wins / (e.wins + e.losses) * 10000) / 100}%</td>
                     </tr>

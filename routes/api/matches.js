@@ -4,3 +4,5 @@ const matchController = require("../../controllers/matchController");
 router.route("/")
     .get(matchController.findAll)
     .post(matchController.create);
+
+module.exports = router;
