@@ -25,8 +25,8 @@ export default function Home() {
                         <td><Icon value={e.ratings}/></td>
                         <td>{e.playerName}</td>
                         <td>{e.ratings}</td>
-                        <td>{e.wins} - {e.losses}</td>
-                        <td>{Math.floor(e.wins / (e.wins + e.losses) * 10000) / 100}%</td>
+                        <td>{e.wins.length} - {e.losses.length}</td>
+                        <td>{Math.floor(e.wins.length / (e.wins.length + e.losses.length) * 10000) / 100}%</td>
                     </tr>
                         )}
                 </table>

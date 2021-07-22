@@ -11,6 +11,10 @@ const matchSchema = new Schema({
         type: Schema.Types.ObjectId, 
         ref: 'Player' 
     },
+    winnerName: {
+        type: String,
+        required: true
+    },
     winnerRace: {
         type: String,
         required: true
@@ -18,6 +22,10 @@ const matchSchema = new Schema({
     loser: {
         type: Schema.Types.ObjectId, 
         ref: 'Player' 
+    },
+    loserName: {
+        type: String,
+        required: true
     },
     loserRace: {
         type: String,

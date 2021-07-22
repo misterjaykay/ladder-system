@@ -24,11 +24,12 @@ export default function Admin() {
             <h1>Admin Page</h1>
             <ul>
             {state.matches.map(e => 
-                <li>
-                    <h5>{e.matchId}</h5>
-                    <p>{e.winner} &#40;{e.winnerRace}&#41; vs {e.loser} &#40;{e.loserRace}&#41;</p>
-                    <p>{e.winner} Won.</p>
+                <li key={e.matchId}>
+                    <h5>Match ID: {e.matchId}</h5>
+                    <p>{e.winnerName} &#40;{e.winnerRace.charAt(0).toUpperCase()}&#41; vs {e.loserName} &#40;{e.loserRace.charAt(0).toUpperCase()}&#41;</p>
+                    <p>{e.winnerName} Won.</p>
                     <p>Confirmed by Admin? : {JSON.stringify(e.isAdmin)}</p>
+                    <button>Click to Confirm</button>
                 </li>
             )}
             </ul>
