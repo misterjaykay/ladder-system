@@ -25,6 +25,7 @@
   "homepage": "https://github.com/misterjaykay/ladder-system#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "elo-rank": "^1.0.4",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
     "mongoose": "^5.13.2"

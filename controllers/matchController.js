@@ -11,21 +11,34 @@ module.exports = {
   create: function (req, res) {
     db.Match.create(req.body)
       .then((dbMatch) => {
-        db.Player.findOneAndUpdate(
-          { _id: dbMatch.winner },
-          { $push: { wins: dbMatch._id } }
-        )
-          .then((res) => console.log("findOneAndUpdate", res))
-          .catch((err) => console.log("wrong update", err));
-        db.Player.findOneAndUpdate(
-          { _id: dbMatch.loser },
-          { $push: { losses: dbMatch._id } }
-        )
-          .then((res) => console.log("findOneAndUpdate", res))
-          .catch((err) => console.log("wrong update", err));
-        console.log("create dbMatch", dbMatch);
         res.json(dbMatch);
       })
+      .catch((err) => res.json(err));
+  },
+
+  update: function (req, res) {
+    db.Match.findOne({ _id: req.params.id })
+      .then((dbMatch) => {
+        db.Match.updateOne({ _id: req.params.id }, { $set: { isAdmin: true } })
+          .then(async (res) => {
+            console.log("res", res)
+            await db.Player.updateOne(
+              { _id: dbMatch.winner },
+              { $push: { wins: dbMatch._id } }
+            )
+              .then(res => console.log(res))
+              .catch(err => console.log("wrong update", err));
+
+            await db.Player.updateOne(
+              { _id: dbMatch.loser },
+              { $push: { losses: dbMatch._id } }
+            )
+              .then(res => console.log(res))
+              .catch(err => console.log("wrong update", err));
+          })
+          .catch((err) => console.log("wrong update", err));
+      })
+      .then(res => res.json(res))
       .catch((err) => res.json(err));
   },
 };

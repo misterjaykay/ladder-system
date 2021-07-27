@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import axios from "axios";
 import DataContext from "./utils/DataContext";
 import Home from "./pages/Home";
 import Submit from "./pages/Submit";
@@ -19,7 +18,6 @@ function App() {
   function onLoad() {
     API.getPlayers()
     .then(res => {
-      console.log("whats in res", res)
       setData(res.data)
     })
     .catch(err => console.log("Error: ", err));

@@ -3,6 +3,9 @@ const matchController = require("../../controllers/matchController");
 
 router.route("/")
     .get(matchController.findAll)
-    .post(matchController.create);
+    .post(matchController.create)
+
+router.route("/:id")
+    .put(matchController.update);
 
 module.exports = router;
